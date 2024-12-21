@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #061b1d;
+    width: 100%;
+    height: 80px;
+}
+
+header h1 {
+    color: antiquewhite;
+    display: flex;
+    position: absolute;
+    left: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+
+header h3 {
+    color: rgb(141, 75, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    height: 90px;
+}
+body{
+    background-image: linear-gradient(120deg, #f6d242 0%, #ff6c98 100%) ;
+}
+.zzr {
+    color: rgb(70, 104, 167);
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h4 a {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 81, 255);
+    text-decoration: none;
+}
+h4 a:hover {
+    text-decoration: underline;
+}
+
+
+footer{
+    background-color: rgb(32, 32, 32);
+    color: rgb(255, 255, 255);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    line-height: 1.8em;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 1081px) {
+    header h1 {
+        font-size: 20px;
+    }
+    header h3 {
+        font-size: 25px;
+    }
+}
