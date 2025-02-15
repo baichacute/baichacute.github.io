@@ -38,10 +38,6 @@ header a:hover {
 }
 
 
-.time {
-    color: rgb(9, 24, 109);
-    font-size: 3vw;
-}
 
 
 body{
@@ -77,8 +73,8 @@ body{
     align-items: center;
 }
 .zhuti img {
-    width: 40vw;
-    height: 30vw;
+    width: 80vw;
+    height: 40vw;
     
 }
 
@@ -147,9 +143,6 @@ footer{
         margin-top: 30vh;
         font-size: 40px;
         font-weight: 100;
-    }
-    .time {
-        font-size: 5vw;
     }
     
 }
