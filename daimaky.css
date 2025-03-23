@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    background-color: #061b1d;
+    width: 100%;
+    height: 80px;
+}
+
+
+header li {
+    display: inline;
+    margin-left: 4vw;
+    font-size: 25px;
+}
+header a {
+    color: rgba(255, 38, 0, 0.863);
+    text-decoration: none;
+}
+header a:hover {
+    text-decoration: underline;
+}
+
+
+header h1 {
+    color: antiquewhite;
+    display: flex;
+    position: absolute;
+    left: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+header h3 {
+    color: rgb(141, 75, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    height: 90px;
+}
+
+hr {
+    height: 0;
+    border: 2px solid rgb(56, 51, 42);
+}
+
+.jieshao0  {
+    color: rgb(34, 34, 34);
+    display: flex;
+}
+.jieshao0 a{
+    font-size: 2vw;
+    color: rgb(46, 35, 61);
+}
+.jieshao0 blockquote{
+    margin-left: 20vw; /* 调整文本和边框的距离 */
+    display: flex;
+    font-size: 2vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+.jieshao0 img{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    width: 55vw;
+    height: 70vh;
+}
+
+
+
+
+.jieshao1  {
+    color: rgb(34, 34, 34);
+    display: flex;
+}
+.jieshao1 a{
+    font-size: 2vw;
+    color: rgb(46, 35, 61);
+}
+.jieshao1 blockquote{
+    margin-left: 15vw; /* 调整文本和边框的距离 */
+    display: flex;
+    font-size: 2vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+.jieshao1 img{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    width: 55vw;
+    height: 70vh;
+}
+
+.jinggao {
+    color: rgb(255, 0, 0);
+
+}
+h4 a {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 81, 255);
+    text-decoration: none;
+}
+h4 a:hover {
+    text-decoration: underline;
+}
+
+footer{
+    background-color: rgb(32, 32, 32);
+    color: rgb(255, 255, 255);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    line-height: 1.8em;
+}
+/* 响应式设计 */
+@media screen and (max-width: 1081px) {
+    header h1 {
+        font-size: 20px;
+    }
+    header h3 {
+        font-size: 20px;
+    }
+    
+    .jieshao0 blockquote{
+        margin-left: 10vw;
+        font-size: 3vw;
+    }
+    .jieshao0 img{
+        margin-top: 20vw;
+        width: 60vw;
+        height: 25vh;
+    }
+    .jieshao0 blockquote{
+        height: 300px;
+    }
+
+
+
+
+    .jieshao1 a{
+        display: none;
+    }
+    .jieshao1 blockquote{
+        margin-left: 10vw;
+        font-size: 3vw;
+    }
+    .jieshao1 img{
+        margin-top: 20vw;
+        width: 60vw;
+        height: 25vh;
+    }
+    .jieshao1 blockquote{
+        height: 300px;
+    }
+
+}
