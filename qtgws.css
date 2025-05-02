@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*全屏同色*/
+body{
+    background-image: linear-gradient(120deg, #202020d2 0%, #006d8f 100%) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* 让 body 最小高度为视口高度 */
+    min-height: 100vh;
+    /* 去除默认外边距 */
+    margin: 0;
+}
+
+body a {
+    color: rgb(129, 129, 129);
+    text-decoration: none;
+}
+body a:hover {
+    text-decoration: underline;
+}
+
+header  {
+    background-color: #061b1d;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+}
+header h1 {
+    color:rgb(255, 255, 255);
+    /* position: absolute; */
+    left: 5px;
+    top: 0;
+    line-height: 80px;
+}
+header ul {
+    position: absolute;
+    right:5vw;
+    top: 0;
+    line-height: 80px;
+}
+header li {
+    display: inline;
+    margin-left: 4vw;
+    font-size: 17px;
+}
+header a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+header a:hover {
+    text-decoration: underline;
+}
+#mobile-arrow {
+    position: absolute;
+    left: 20px; /* 将箭头移到左边 */
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 36px; /* 放大字体，可按需调整 */
+    text-decoration: none;
+}
+
+#mobile-arrow:hover {
+    color: #ccc;
+}
+footer{
+    /* background-color: rgb(32, 32, 32); */
+    color: rgb(133, 133, 133);
+    height: 30px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.8em; */
+    font-size: 10px;
+    position: fixed;
+    left:40%;
+    bottom: 0px;
+
+}
+
+.square-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    flex-wrap: wrap; /* 当空间不足时换行 */
+    gap: 10px; /* 框框之间的间距 */
+}
+.rounded-square {
+    width: 360px; /* 正方形的宽度 */
+    height: 200px; /* 正方形的高度 */
+    border-radius: 10px; /* 圆角半径，值越大圆角越明显 */
+    background-color: #e4e4e4; /* 框框的背景颜色，可按需修改 */
+    margin: 10px; /* 框框之间的外边距 */
+    display: inline-block; /* 让框框水平排列 */
+}
+.rounded-square p {
+    font-size: 16px;
+}
+
+
+
+@media (max-width: 600px) {
+    .item-name {
+        margin-left: 10px;
+    }
+    .item-type {
+        margin-left: 10px;
+    }
+    .download-button {
+        margin-right: 30px; 
+    
+    }
+    footer {
+        left:20%;
+    }
+}

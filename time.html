@@ -1,0 +1,155 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间沙漏</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+div{
+    display: flex;
+}
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.relative{
+    max-width: 4000px;
+    min-height: 3000px;
+    padding: 6.5em 0 0!important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    background: #040d21;
+    position: relative;
+    display: block;
+}
+.padding{
+    position: absolute;
+    top:1%;
+    left: 31%;
+    color: #fff;
+    font-size: 118px;
+    font-weight: 800;
+}
+.padding-bottom{
+    position: absolute;
+    top: 6%;
+    left: 43%;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 500;
+}
+.time-temp{
+    margin: 0 10px;
+    transform: translateY(-10px);
+}
+.time-ltemp{
+    margin: 0 10px;
+    transform: translateY(-5px);
+}
+.text{
+    background:linear-gradient(-210deg,#a2facf 0%,#64acff 100%);
+    color:transparent;
+    -webkit-background-clip:text;
+    letter-spacing: -0.03em;
+    display: block;
+    align-items: center;
+}
+
+header {
+    font-size: 60px;
+    font-weight: 550;
+    color: coral;
+    background: #040d21;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    
+}
+/* 响应式设计 */
+@media screen and (max-width: 1081px) {
+
+    .padding{
+    top:1%;
+    left: 10%;
+    font-size: 70px;
+    font-weight: 700;
+    }
+    .padding-bottom{
+        top: 4%;
+        left: 35%;
+    }
+}
+    </style>
+ </head>
+ 
+ <header>
+    <p class="wz">当前时间</p>
+ </header>
+ <body>
+    <div class="relative">
+        <div class="padding">
+            <div id="time-hour" class="text">00</div>
+            <div class="time-temp">:</div>
+            <div id="time-minutes" class="text">00</div>
+            <div class="time-temp">:</div>
+            <div id="time-second" class="text">00</div>
+        </div>
+        <div class="padding-bottom">
+            <div id="time-year" class="text">00</div>
+            <div class="time-ltemp">-</div>
+            <div id="time-month" class="text">00</div>
+            <div class="time-ltemp">-</div>
+            <div id="time-day" class="text">00</div>
+        </div>
+    </div>
+
+    <script>
+        function time(){
+            var time = new Date();
+            var hour;
+            var minutes;
+            var seconds;
+            var year;
+            var month;
+            var day;
+            year = time.getFullYear();
+            month = time.getMonth();
+            day = time.getDate();
+            document.getElementById("time-year").innerHTML=year;
+            document.getElementById("time-month").innerHTML=month + 1;
+            document.getElementById("time-day").innerHTML=day;
+            var temph = time.getHours();
+            if(temph <= 9 && temph > 0){
+                hour="0"+temph;
+            }else{
+                hour=temph;
+            }
+            var tempm = time.getMinutes();
+            if(tempm < 10 && temph > 0){
+                minutes="0"+tempm;
+            }else{
+                minutes = tempm;
+            }
+            var temps = time.getSeconds();
+            if(temps < 10 && temph > 0){
+                seconds = "0"+temps;
+            }else{
+                seconds=temps;
+            }
+            document.getElementById("time-hour").innerHTML = hour;
+            document.getElementById("time-minutes").innerHTML = minutes;
+            document.getElementById("time-second").innerHTML = seconds;
+        }
+        window.setInterval(time,1000);
+    </script>
+ </body>
+ </html>

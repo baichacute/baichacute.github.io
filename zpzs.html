@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示</title>
+    <link rel="shortcut icon" type="image/png" href="photo/tub.png">
+    <link rel="stylesheet" href="zpzss.css">
+</head>
+<header>
+    <h1>阿茶の小破站</h1>
+    <!-- 在选中代码添加 id -->
+    <ul id="mobile-hide">
+        <li><a href="index.html" >返回主页</a></li>
+        <li><a href="qtgw.html" target="_blank">其他官网</a></li>
+        <li><a href="gywm.html" target="_blank">关于我们</a></li>
+    </ul>
+    <!-- 用于手机端的箭头 -->
+    <a href="index.html" id="mobile-arrow" style="display: none;">&larr;</a>
+</header>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <ul id="yind">
+        <li><a href="#htmls">html</a></li>
+        <li><a href="#pythons">python</a></li>
+    </ul>
+
+
+    <div class="htmls">
+    <!-- 新增长条框框 -->
+    <div class="download-item">
+        <img src="photo/timezs.png" alt="Item Image" class="item-image">
+        <div class="item-info">
+            <h3 class="item-name">时间沙漏</h3>
+            <p class="item-type">html</p>
+            <p class="item-description" style="display: none;">这里是一个好看的时间显示网页。</p>
+        </div>
+        <a href="time.html" target="_blank" class="download-button">前往查看</a>
+        
+        <!-- <a href="#" class="download-button">下载</a> -->
+    </div>
+    </div>
+
+
+    <div class="pythons">
+    <div class="download-item">
+        <img src="photo/timezs.png" alt="Item Image" class="item-image">
+        <div class="item-info">
+            <h3 class="item-name">阿茶の工具箱</h3>
+            <p class="item-type">python</p>
+            <p class="item-description" style="display: none;">这里是一个会集成一些好用功能的工具箱。</p>
+        </div>
+        <a href="time.html" target="_blank" class="download-button">下载exe压缩包</a>
+        <a href="time.html" target="_blank" class="download-button">源码py压缩包</a>
+        <p class="mobile-tip" style="display: none;">仅为电脑端下载</p>
+        <!-- <a href="#" class="download-button">下载</a> -->
+    </div>
+    </div>
+
+
+
+    <footer>
+        <p>Copyright © 2025 阿茶の小破站 All Rights Reserved</p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        const navList = document.getElementById('mobile-hide');
+        const title = document.querySelector('header h1'); 
+        const pythonDownloadLinks = document.querySelectorAll('.pythons .download-button');
+        const mobileTip = document.querySelector('.pythons .mobile-tip');
+        const mobileArrow = document.getElementById('mobile-arrow');
+        // 选中介绍元素
+        const itemDescriptions = document.querySelectorAll('.item-description');
+
+        if (isMobile()) {
+            console.log('当前设备是手机');
+            if (navList) {
+                navList.style.display = 'none';
+            }
+            if (title) {
+                title.style.textAlign = 'center'; 
+            }
+            // 隐藏下载链接
+            pythonDownloadLinks.forEach(link => {
+                link.style.display = 'none';
+            });
+            // 显示提示信息
+            if (mobileTip) {
+                mobileTip.style.display = 'block';
+            }
+            // 显示箭头
+            if (mobileArrow) {
+                mobileArrow.style.display = 'inline-block';
+                // 设置跳转链接，这里假设跳转到 qtgw.html，可按需修改
+                // mobileArrow.href = 'qtgw.html'; 
+            }
+            // 隐藏介绍
+            itemDescriptions.forEach(desc => {
+                desc.style.display = 'none';
+            });
+        } else {
+            console.log('当前设备是电脑');
+            if (navList) {
+                navList.style.display = 'block';
+            }
+            if (title) {
+                title.style.textAlign = ''; 
+            }
+            // 显示下载链接
+            pythonDownloadLinks.forEach(link => {
+                link.style.display = 'inline-block';
+            });
+            // 隐藏提示信息
+            if (mobileTip) {
+                mobileTip.style.display = 'none';
+            }
+            // 隐藏箭头
+            if (mobileArrow) {
+                mobileArrow.style.display = 'none';
+            }
+            // 显示介绍
+            itemDescriptions.forEach(desc => {
+                desc.style.display = 'block';
+            });
+        }
+    }); 
+</script>
+</html>

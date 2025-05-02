@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    background-image: linear-gradient(120deg, #ffda62 0%, #72b8fd 100%) ;
+    min-height: 100vh;
+}
+header  {
+    background-color: #061b1d;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 10;
+}
+header h1 {
+    color:rgb(255, 255, 255);
+    /* position: absolute; */
+    left: 5px;
+    top: 0;
+    line-height: 80px;
+}
+header ul {
+    position: absolute;
+    right:5vw;
+    top: 0;
+    line-height: 80px;
+}
+header li {
+    display: inline;
+    margin-left: 4vw;
+    font-size: 17px;
+}
+header a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+header a:hover {
+    text-decoration: underline;
+}
+#mobile-arrow {
+    position: absolute;
+    left: 20px; /* 将箭头移到左边 */
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 36px; /* 放大字体，可按需调整 */
+    text-decoration: none;
+}
+
+#mobile-arrow:hover {
+    color: #ccc;
+}
+footer{
+    /* background-color: rgb(32, 32, 32); */
+    color: rgb(133, 133, 133);
+    height: 30px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.8em; */
+    font-size: 10px;
+    position: fixed;
+    left:40%;
+    bottom: 0px;
+
+}
+
+
+.square-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    flex-wrap: wrap; /* 当空间不足时换行 */
+    gap: 10px; /* 框框之间的间距 */
+}
+.rounded-square {
+    width: 160px; /* 正方形的宽度 */
+    height: 160px; /* 正方形的高度 */
+    border-radius: 10px; /* 圆角半径，值越大圆角越明显 */
+    background-color: #e4e4e4; /* 框框的背景颜色，可按需修改 */
+    margin: 10px; /* 框框之间的外边距 */
+    display: inline-block; /* 让框框水平排列 */
+    vertical-align: top; 
+    padding: 15px; 
+    box-sizing: border-box; 
+    text-align: center; /* 文本水平居中 */
+}
+
+.jieshao {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; /* 垂直方向居中 */
+    text-align: center; /* 文本水平居中 */
+}
+
+
+/* 时间线容器 */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 时间线垂直线 */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #ccc;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+/* 时间线项目 */
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/* 时间线项目的圆形标记 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -13px;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* 左半部分的时间线项目 */
+.timeline-item.left {
+    left: 0;
+}
+
+/* 右半部分的时间线项目 */
+.timeline-item.right {
+    left: 50%;
+}
+
+/* 右半部分时间线项目的圆形标记位置调整 */
+.timeline-item.right::after {
+    left: -13px;
+}
+
+/* 时间日期样式 */
+.timeline-date {
+    padding: 10px;
+    background-color: #FF9F55;
+    color: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* 时间内容样式 */
+.timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .item-name {
+        margin-left: 10px;
+    }
+    .item-type {
+        margin-left: 10px;
+    }
+    .download-button {
+        margin-right: 30px; 
+    
+    }
+    footer {
+        left:20%;
+    }
+}

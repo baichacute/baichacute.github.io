@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他官网</title>
+    <link rel="shortcut icon" type="image/png" href="photo/tub.png">
+    <link rel="stylesheet" href="qtgws.css">
+</head>
+<header>
+    <h1>阿茶の小破站</h1>
+    <!-- 在选中代码添加 id -->
+    <ul id="mobile-hide">
+        <li><a href="zpzs.html" target="_blank">作品展示</a></li>
+        <li><a href="index.html" >返回主页</a></li>
+        <li><a href="gywm.html" target="_blank">关于我们</a></li>
+    </ul>
+    <!-- 用于手机端的箭头 -->
+    <a href="index.html" id="mobile-arrow" style="display: none;">&larr;</a>
+</header>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <div class="square-container">
+        <!-- 添加带标题和内容的正方形圆角框框 -->
+        <div class="rounded-square">
+            <h2>游戏</h2>
+            <p><a href="https://store.epicgames.com/"target="_blank">https://store.epicgames.com  </a>epic的官网
+                <br><a href="https://store.steampowered.com/"target="_blank">https://store.steampowered.com  </a>steam官网
+                <br></p>
+        </div>
+        <div class="rounded-square">
+            <h2>在线工具</h2>
+            <p><a href="https://www.doubao.com"target="_blank">https://www.doubao.com </a>豆包官网
+
+            </p>
+        </div>
+        <div class="rounded-square">
+            <h2>工具</h2>
+            <p><a href="https://www.7-zip.org/"target="_blank">https://www.7-zip.org </a>解压7-zip官网
+                <br><a href="https://www.python.org/"target="_blank">https://www.python.org </a>Python官网
+                <br><a href="https://ffmpeg.org/"target="_blank">https://ffmpeg.org </a>多媒体处理ffmpeg官网
+            </p>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <footer>
+        <p>Copyright © 2025 阿茶の小破站 All Rights Reserved</p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        const navList = document.getElementById('mobile-hide');
+        const title = document.querySelector('header h1'); 
+        const mobileArrow = document.getElementById('mobile-arrow');
+
+        if (isMobile()) {
+            console.log('当前设备是手机');
+            if (navList) {
+                navList.style.display = 'none';
+            }
+            if (title) {
+                title.style.textAlign = 'center'; 
+            }
+            // 显示箭头
+            if (mobileArrow) {
+                mobileArrow.style.display = 'inline-block'; 
+            }
+        } else {
+            console.log('当前设备是电脑');
+            if (navList) {
+                navList.style.display = 'block';
+            }
+            if (title) {
+                title.style.textAlign = ''; 
+            }
+            // 隐藏箭头
+            if (mobileArrow) {
+                mobileArrow.style.display = 'none';
+            }
+        }
+    }); 
+</script>
+</html>

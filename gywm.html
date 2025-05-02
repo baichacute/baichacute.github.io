@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们</title>
+    <link rel="shortcut icon" type="image/png" href="photo/tub.png">
+    <link rel="stylesheet" href="gywms.css">
+</head>
+<header>
+    <h1>阿茶の小破站</h1>
+    <!-- 在选中代码添加 id -->
+    <ul id="mobile-hide">
+        <li><a href="zpzs.html" target="_blank">作品展示</a></li>
+        <li><a href="qtgw.html" target="_blank">其他官网</a></li>
+        <li><a href="index.html" >返回主页</a></li>
+    </ul>
+    <!-- 用于手机端的箭头 -->
+    <a href="index.html" id="mobile-arrow" style="display: none;">&larr;</a>
+</header>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+    <div class="jieshao">
+        <h2>关于我们</h2>
+        <p>
+            阿茶の小破站是一个用爱发电的工作室
+            <br>
+            所有的内容都开源、免费、绿色
+            <br>
+            做一些有意思的程序
+            <br>
+            内容基于Python、html
+        </p>
+    </div>
+
+
+    <!-- 添加带标题和内容的正方形圆角框框 -->
+    <div class="square-container">
+        <div class="rounded-square">
+            <h3>制作</h3>
+            <p>可爱的阿茶</p>
+        </div>
+        <div class="rounded-square">
+            <h3>素材</h3>
+            <p>可爱的阿茶</p>
+        </div>
+        <div class="rounded-square">
+            <h3>建议</h3>
+            <p>可爱的阿茶</p>
+        </div>
+        <div class="rounded-square">
+            <h3>支持</h3>
+            <p>呵呵</p>
+        </div>
+    </div>
+
+    <hr>
+    <div class="shijx">
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-date">2024-12-13</div>
+                <div class="timeline-content">第一版网站制作完成</div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-date">2025-02-15</div>
+                <div class="timeline-content">第一版网站内容更新</div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-date">2025-03-23</div>
+                <div class="timeline-content">第二版网站内容规划</div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-date">2025-03-30</div>
+                <div class="timeline-content">第二版网站内容更新</div>
+            </div>
+            
+            <!-- 继续添加更多时间线项目 -->
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2025 阿茶の小破站 All Rights Reserved</p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        const navList = document.getElementById('mobile-hide');
+        const title = document.querySelector('header h1'); 
+        const mobileArrow = document.getElementById('mobile-arrow');
+
+        if (isMobile()) {
+            console.log('当前设备是手机');
+            if (navList) {
+                navList.style.display = 'none';
+            }
+            if (title) {
+                title.style.textAlign = 'center'; 
+            }
+            // 显示箭头
+            if (mobileArrow) {
+                mobileArrow.style.display = 'inline-block'; 
+            }
+        } else {
+            console.log('当前设备是电脑');
+            if (navList) {
+                navList.style.display = 'block';
+            }
+            if (title) {
+                title.style.textAlign = ''; 
+            }
+            // 隐藏箭头
+            if (mobileArrow) {
+                mobileArrow.style.display = 'none';
+            }
+        }
+    }); 
+</script>
+</html>
