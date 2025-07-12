@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>生日倒计时</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        div{
+            display: flex;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .relative{
+            max-width: 4000px;
+            min-height: 3000px;
+            padding: 6.5em 0 0!important;
+            margin-right: auto!important;
+            margin-left: auto!important;
+            background: #040d21;
+            position: relative;
+            display: flex; /* 使用 flex 布局 */
+            justify-content: center; /* 水平居中 */
+        }
+        .padding{
+            /* 移除原有的定位样式 */
+            /* position: absolute;
+            top:0%;
+            left: 15%; */
+            color: #fff;
+            font-size: 80px;
+            font-weight: 700;
+        }
+        .padding-bottom{
+            position: absolute;
+            top: 40%;
+            left: 50%; /* 水平居中 */
+            transform: translateX(-50%); /* 微调以实现精确居中 */
+            color: #fff;
+            font-size: 36px;
+            font-weight: 500;
+        }
+        .time-temp{
+            margin: 0 5px;
+            transform: translateY(-10px);
+        }
+        .time-ltemp{
+            margin: 0 10px;
+            transform: translateY(-5px);
+        }
+        .text{
+            background:linear-gradient(-210deg,#a2facf 0%,#64acff 100%);
+            color:transparent;
+            -webkit-background-clip:text;
+            letter-spacing: -0.03em;
+            display: block;
+            align-items: center;
+        }
+        header {
+            
+            font-size: 60px;
+            font-weight: 600;
+            color: coral;
+            background: #040d21;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            
+        }
+        .srwz{
+            position: relative;
+            /* 向上移动，可根据实际情况调整数值 */
+            top: 50vh; 
+        }
+
+
+        /* 响应式设计 */
+        @media screen and (max-width: 800px) {
+            header {
+                font-size: 12vw;
+
+            }
+            .padding{
+                font-size: 10vw;
+                font-weight: 700;
+            }
+        }
+
+    </style>
+
+</head>
+<header>
+    <p class="wz1">亲爱的袋子</p>
+    <p class="wz">距离你的生日还有</p>
+    <p class="lw" style="font-size: 30px;">&#8595;生日礼物&#8595;</p> 
+
+    <div class="srwz" style="position: absolute;">
+        <!-- 添加图片按钮，初始隐藏 -->
+        <button id="celebrate-btn" style="display: none; background: none; border: none; cursor: pointer;" onclick="window.location.href='srzf.html';">
+            <img src="photo/lw.jpg" alt="Celebrate" width="300vw">
+        </button>
+    </div>
+</header>
+<body>
+    
+    </div>
+   <div class="relative">
+       <div class="padding">
+            
+            <div id="time-day" class="text">00</div>
+            <div class="time-temp"></div>
+           <div id="time-hour" class="text">00</div>
+           <div class="time-temp"></div>
+           <div id="time-minutes" class="text">00</div>
+           <div class="time-temp"></div>
+           <div id="time-second" class="text">00</div>
+       </div>
+   </div>
+
+
+
+</body>
+
+   <script>
+       function time(){
+           var time = new Date();
+           var lasttime = new Date(2025,4,17,19,2);//生日时间
+           var timedifferent = lasttime - time;
+           var hour;
+           var minutes;
+           var seconds;
+           var day;
+
+           // 获取图片按钮元素
+           const celebrateBtn = document.getElementById('celebrate-btn');
+           // 获取 header 元素
+           const header = document.querySelector('header');
+           // 获取提示文字元素
+           const wzElement = document.querySelector('.wz');
+           const lwElement = document.querySelector('.lw');
+
+           if (timedifferent <= 0) {
+               // 倒计时为 0，显示图片按钮
+               celebrateBtn.style.display = 'block';
+               // 清空倒计时显示
+               document.getElementById("time-day").innerHTML = '00天';
+               document.getElementById("time-hour").innerHTML = '00时';
+               document.getElementById("time-minutes").innerHTML = '00分';
+               document.getElementById("time-second").innerHTML = '00秒';
+               // 增加 header 的宽度
+               header.style.height = '100vh'; 
+               // 修改提示文字
+               wzElement.innerHTML = '！生日快乐！';
+               return;
+           }
+
+           // 恢复 header 原始高度
+           header.style.height = ''; 
+           // 恢复提示文字
+           wzElement.innerHTML = '距离你的生日还有';
+
+           day = Math.floor(timedifferent/(1000*60*60*24));
+           document.getElementById("time-day").innerHTML = day + "天";
+
+           var temph = Math.floor((timedifferent%(1000*60*60*24))/(1000*60*60));
+           if(temph <= 9 && temph > 0){
+               hour = "0" + temph;
+           } else {
+               hour = temph;
+           }
+           var tempm = Math.floor((timedifferent%(1000*60*60))/(1000*60));
+           if(tempm < 10 && temph > 0){
+               minutes = "0" + tempm;
+           } else {
+               minutes = tempm;
+           }
+           var temps = Math.floor((timedifferent%(1000*60))/(1000));
+           if(temps < 10 && temph > 0){
+               seconds = "0" + temps;
+           } else {
+               seconds = temps;
+           }
+           document.getElementById("time-hour").innerHTML = hour + "时";
+           document.getElementById("time-minutes").innerHTML = minutes + "分";
+           document.getElementById("time-second").innerHTML = seconds + "秒";
+
+           // 倒计时未结束，隐藏图片按钮
+           celebrateBtn.style.display = 'none';
+           lwElement.style.display = 'none';
+       }   
+       window.setInterval(time,1000);
+   </script>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>袋子的生日礼物</title>
+    <link rel="shortcut icon" type="image/png" href="photo/tub.png">
+    <link rel="stylesheet" href="srzfs.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="wish-alert" id="wish-alert">愿望怎能说出来呢！说出来可就不灵啦！我就假装不知道吧！</div>
+    <div class="pages" id="pages">
+        <div class="page">
+            <!-- 除最后一页外添加提示 -->
+            <div class="scroll-hint">-上划继续-</div>
+        </div>
+        <div class="page">
+            <!-- 新增输入框和提交按钮 -->
+            <div class="wish-input-container">
+                <input type="text" id="wish-input" placeholder="输入你的愿望">
+                <button id="submit-wish">给</button>
+            </div>
+            
+            <div class="scroll-hint">-上划继续-</div>
+        </div>
+        <div class="page" id="third-page">
+            <!-- 高级灰覆盖层 -->
+            <div class="challenge-overlay" id="challenge-overlay">
+                <div class="challenge-hint">接受一个挑战</div>
+                <button class="challenge-button" id="challenge-accept">是</button>
+            </div>
+            
+            
+            <div class="scroll-hint">-上划继续-</div>
+        </div>
+        <div class="page"></div>
+    </div>
+    <!-- 添加音乐元素 -->
+    <audio id="background-music" src="生日祝福歌.mp3" loop></audio>
+    <!-- 添加开关元素 -->
+    <div class="music-switch rotating" id="music-switch"></div>
+    <!-- 添加彩带容器 -->
+    <div class="confetti-container" id="confetti-container"></div>
+    <!-- 左边礼花筒 -->
+    <div class="firework-launcher left" id="left-launcher">
+        <!-- 使用 transform 属性将图片向左移动 5px，同时保持原有旋转效果 -->
+        <img src="photo/lh.png" alt="Left Firework Launcher" style="transform: rotate(-12deg) translateX(-12px);" onclick="generateFireworks('left-firework-container')">
+    </div>
+    <!-- 左边礼花容器 -->
+    <div class="firework-container" id="left-firework-container"></div>
+
+<script>
+    const pages = document.getElementById('pages');
+    let currentPage = 0;
+    let pageHeight;
+    let isFireworksGenerated = false; // 用于标记礼花是否已生成
+
+    // 动态计算页面高度
+    function setPageHeight() {
+        pageHeight = window.innerHeight;
+        const pageElements = document.querySelectorAll('.page');
+        pageElements.forEach(page => {
+            page.style.height = `${pageHeight}px`;
+        });
+        pages.style.height = `${pageHeight * pageElements.length}px`;
+    }
+
+    // 初始化页面高度
+    setPageHeight();
+
+    // 监听窗口大小变化
+    window.addEventListener('resize', setPageHeight);
+
+    // 处理滑动事件
+    function handleTouchStart(e) {
+        startY = e.touches[0].clientY;
+    }
+
+    function handleTouchEnd(e) {
+        const endY = e.changedTouches[0].clientY;
+        const deltaY = startY - endY;
+
+        if (deltaY > 50 && currentPage < 3) { // 向上滑动
+            currentPage++;
+            pages.style.transform = `translateY(-${currentPage * pageHeight}px)`;
+        } else if (deltaY < -50 && currentPage > 0) { // 向下滑动
+            currentPage--;
+            pages.style.transform = `translateY(-${currentPage * pageHeight}px)`;
+        }
+        checkPage();
+    }
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    // 音乐相关逻辑
+    const musicSwitch = document.getElementById('music-switch');
+    const backgroundMusic = document.getElementById('background-music');
+    let isMusicOn = true;
+
+    // 初始化播放音乐
+    backgroundMusic.play();
+
+    musicSwitch.addEventListener('click', () => {
+        if (isMusicOn) {
+            backgroundMusic.pause();
+            musicSwitch.style.backgroundImage = 'url("photo/yy.png")';
+            musicSwitch.classList.remove('rotating');
+        } else {
+            backgroundMusic.play();
+            musicSwitch.style.backgroundImage = 'url("photo/yy.png")';
+            musicSwitch.classList.add('rotating');
+        }
+        isMusicOn = !isMusicOn;
+    });
+
+    // 生成彩带
+    /**
+     * 生成随机飘落的彩带
+     * 该函数会在指定的容器中创建多个彩带元素，并为每个彩带设置随机的样式和动画属性
+     */
+    function generateConfetti() {
+        const container = document.getElementById('confetti-container');
+        // 增加更多彩带类型
+        const types = ['type1', 'type2', 'type3', 'type4', 'type5', 'type6'];
+
+
+        const numConfetti = 60; // 彩带数量
+
+        for (let i = 0; i < numConfetti; i++) {
+            const confetti = document.createElement('div');
+            // 随机选择彩带类型
+            confetti.className = `confetti ${types[Math.floor(Math.random() * types.length)]}`;
+            // 随机设置彩带从屏幕顶部出现的位置
+            confetti.style.left = `${Math.random() * 100}vw`;
+
+            // 随机设置彩带的下落速度，范围在 3 到 8 秒之间
+            const randomDuration = 3 + Math.random() * 5;
+            confetti.style.animationDuration = `${randomDuration}s`;
+
+            // 随机设置彩带的水平偏移量，范围在 -200px 到 200px 之间
+            const randomXOffset = (Math.random() - 0.5) * 400;
+            // 更新 CSS 动画的结束状态
+            confetti.style.setProperty('--random-x-offset', `${randomXOffset}px`);
+
+            // 随机决定旋转方向，1 为正转，-1 为反转
+            const rotationDirection = Math.random() > 0.5 ? 1 : -1;
+            confetti.style.setProperty('--rotation-direction', `${rotationDirection * 360}deg`);
+
+            container.appendChild(confetti);
+        }
+    }
+
+    // 生成礼花
+    function generateFireworks(containerId) {
+        const container = document.getElementById(containerId);
+        // 清除旧的礼花
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+        const numFireworks = 60; // 增加礼花数量
+
+        for (let i = 0; i < numFireworks; i++) {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+
+            const randomDuration = 2 + Math.random() * 1; 
+            const randomXOffset = Math.random() * 90 + 5;
+            const randomYOffset = -Math.random() * 80 - 30; 
+
+            firework.style.animationDuration = `${randomDuration}s`;
+            firework.style.setProperty('--random-x-offset', `${randomXOffset}vw`);
+            firework.style.setProperty('--random-y-offset', `${randomYOffset}vh`);
+
+            // 将礼花换成图片
+            const img = document.createElement('img');
+            img.src = 'photo/cs.png'; // 替换为你的礼花图片路径
+            img.style.width = '100%';
+            img.style.height = '100%';
+            firework.appendChild(img);
+
+            container.appendChild(firework);
+        }
+    }
+
+    // 检查是否在第一页并生成彩带和礼花
+    function checkPage() {
+        const confettiContainer = document.getElementById('confetti-container');
+        const leftFireworkContainer = document.getElementById('left-firework-container');
+        const leftLauncher = document.getElementById('left-launcher');
+
+        if (currentPage === 0) {
+            leftLauncher.style.display = 'block';
+            if (confettiContainer.children.length === 0) {
+                generateConfetti();
+            }
+            if (!isFireworksGenerated) {
+                generateFireworks('left-firework-container');
+                isFireworksGenerated = true;
+            }
+        } else {
+            leftLauncher.style.display = 'none'; // 其他页面隐藏礼花筒
+            // 离开第一页时清除彩带和左边礼花
+            while (confettiContainer.firstChild) {
+                confettiContainer.removeChild(confettiContainer.firstChild);
+            }
+            while (leftFireworkContainer.firstChild) {
+                leftFireworkContainer.removeChild(leftFireworkContainer.firstChild);
+            }
+            isFireworksGenerated = false;
+        }
+    }
+
+    // 初始化检查页面
+    checkPage();
+
+    // 新增愿望提交逻辑
+    const wishInput = document.getElementById('wish-input');
+    const submitWishButton = document.getElementById('submit-wish');
+    const wishAlert = document.getElementById('wish-alert');
+
+    submitWishButton.addEventListener('click', () => {
+        const wish = wishInput.value.trim();
+        if (wish) {
+            wishAlert.style.display = 'block';
+            // 5 秒后隐藏提示框
+            setTimeout(() => {
+                wishAlert.style.display = 'none';
+            }, 5000);
+        }
+    });
+
+    // 处理挑战按钮点击事件
+    const challengeAcceptButton = document.getElementById('challenge-accept');
+    const challengeOverlay = document.getElementById('challenge-overlay');
+    const dinoGame = document.getElementById('dino-game');
+
+    challengeAcceptButton.addEventListener('click', () => {
+        challengeOverlay.style.display = 'none';
+        dinoGame.style.display = 'block';
+        //jia入什么
+    });
+
+        
+
+</script>
+</body>
+</html>
+
+
+
+
+

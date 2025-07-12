@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.pages {
+    width: 100%;
+    /* 移除 height: 100vh; */
+    transition: transform 0.5s ease-in-out;
+}
+
+.page {
+    width: 100%;
+    /* 移除 height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    /* 添加背景图片通用设置 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* .page:nth-child(1) { background-color: #FFD700; } */
+.page:nth-child(2) { background-color: #FFA07A; }
+.page:nth-child(3) { background-color: #98FB98; }
+.page:nth-child(4) { background-color: #87CEFA; }
+
+/* 为每页设置不同的背景图片 */
+.page:nth-child(1) { background-image: url('photo/zf.jpg'); }
+.page:nth-child(2) { background-image: url('photo/dd2.jpg'); }
+.page:nth-child(3) { background-image: url('photo/dd3.jpg'); }
+.page:nth-child(4) { background-image: url('photo/dd4.jpg'); }
+
+
+ /* 添加开关样式 */
+ .music-switch {
+    z-index: 200;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-image: url('photo/yy.png'); /* 默认开启图片 */
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+}
+
+.music-switch.rotating {
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 彩带容器样式 */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 99;
+}
+
+/* 彩带通用样式 */
+.confetti {
+    position: absolute;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    animation: fall linear infinite;
+}
+
+/* 三种不同颜色的彩带 */
+.confetti.type1 {
+    background-image: url('photo/hs.png'); 
+    background-size: cover; /* 让图片覆盖整个元素 */
+    background-position: center; /*图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    animation-duration: 6.5s;
+}
+
+.confetti.type2 {
+    background-image: url('photo/ls.png'); 
+    background-size: cover; /* 让图片覆盖整个元素 */
+    background-position: center; /*图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    animation-duration: 6.5s;
+}
+
+.confetti.type3 {
+    /* 替换背景颜色为背景图片，假设图片名为 confetti6.png，存放在 photo 文件夹下 */
+    background-image: url('photo/cs.png'); 
+    background-size: cover; /* 让图片覆盖整个元素 */
+    background-position: center; /*图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    animation-duration: 6.5s;
+}
+
+/* 新增彩带类型样式 */
+.confetti.type4 {
+    background-image: url('photo/qs.png'); 
+    background-size: cover; /* 让图片覆盖整个元素 */
+    background-position: center; /*图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    animation-duration: 6.5s;
+}
+
+.confetti.type5 {
+    background-image: url('photo/lus.png'); 
+    background-size: cover; /* 让图片覆盖整个元素 */
+    background-position: center; /*图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    animation-duration: 6.5s;
+}
+
+.confetti.type6 {
+    background-image: url('photo/zs.png'); 
+    background-size: cover; /* 让图片覆盖整个元素 */
+    background-position: center; /*图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    animation-duration: 6.5s;
+}
+
+/* .confetti.type6 {
+    background-color: #00FFFF;
+    animation-duration: 6.5s;
+} */
+
+/* 彩带下落动画 */
+@keyframes fall {
+    0% {
+        top: -10px;
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        top: 100vh;
+        transform: translateX(var(--random-x-offset)) rotate(var(--rotation-direction));
+    }
+}
+
+
+/* 已有样式 */
+
+/* 礼花筒样式 */
+.firework-launcher {
+    position: fixed;
+    bottom: 0;
+    width: 100px;
+    z-index: 101;
+}
+
+.firework-launcher.left {
+    /* 修正 left 值并添加单位，数值越大向左移动越多 */
+    left: -5px; 
+    /* 添加 bottom 属性，数值越小向下移动越多 */
+    bottom: -6px; 
+}
+
+.firework-launcher img {
+    width: 100%;
+    height: auto;
+}
+
+/* 礼花容器样式 */
+.firework-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9;
+}
+
+/* 已有样式保持不变 */
+
+/* 礼花样式 */
+.firework {
+    position: absolute;
+    bottom: 0;
+    width: 20px; /* 可根据图片大小调整 */
+    height: 20px; /* 可根据图片大小调整 */
+    animation: firework-animation linear;
+}
+
+/* 礼花动画 */
+@keyframes firework-animation {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    10% { /* 礼花快速飞到指定位置 */
+        transform: translate(var(--random-x-offset), var(--random-y-offset));
+        opacity: 1;
+    }
+    15% { /* 礼花在指定位置停留 */
+        transform: translate(var(--random-x-offset), var(--random-y-offset));
+        opacity: 1;
+    }
+    80% { /* 礼花开始向下掉落 */
+        transform: translate(var(--random-x-offset), calc(var(--random-y-offset) + 50vh));
+        opacity: 1;
+    }
+    100% { /* 礼花消失 */
+        transform: translate(var(--random-x-offset), calc(var(--random-y-offset) + 50vh));
+        opacity: 0;
+    }
+}
+
+ /* 定义透明度变化动画 */
+ @keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.page {
+    position: relative; /* 设置为相对定位 */
+}
+.scroll-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    animation: fadeInOut 4s ease-in-out infinite;
+}
+
+.wish-input-container {
+    position: absolute;
+    bottom: 60px; /* 位于 scroll-hint 上方 20px */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+#wish-input {
+    padding: 4px; /* 减小输入框内边距 */
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+#submit-wish {
+    padding: 4px 8px; /* 减小按钮内边距 */
+    background-color: #007BFF;
+    color: white;
+    border: 1px solid #007BFF;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+/* 提示框样式 */
+.wish-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 100;
+    display: none;
+}
+
+ /* 高级灰覆盖层样式 */
+ .challenge-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999999; /* 高级灰颜色 */
+    opacity: 1;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.challenge-hint {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+    transform: translateY(210px); /* 向下移动 20px */
+
+}
+
+.challenge-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: translateY(220px); /* 向下移动 20px */
+
+}
+
+
+
